@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Taptitle</title>
+        <link rel="stylesheet" href="../css/classless.css" />
+        <link rel="stylesheet" href="../css/common.css" />
+        <link rel="stylesheet" href="../css/watch.css" />
+        <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
+    </head>
+    <body>
+
+    <h1>Watch a video</h1>
+    <h4>In the current version of Taptitle, only locally downloaded videos can be watched.</h4>
+    <form id="watch-form">
+        <fieldset>
+            <label for="video-input">Step 1: Select a video file:</label>
+            <input id="video-input" type="file" accept="video/*"/>
+        </fieldset>
+        <fieldset>
+            <label for="subtitles-input">Step 2: Select a subtitles file:</label>
+            <input id="subtitles-input" type="file" accept=".srt" />
+        </fieldset>
+        <input id="watch-form-submit" type="submit" value="Load" />
+    </form>
+    
+    <div id="watch-video">
+        <video id="video" controls>
+            <source id="video-src" src="#">
+            An error occurred – either your browser doesn't support the required features,
+            the video file specified wasn't found, or the format of the video is unsupported.
+        </video>
+    </div>
+
+    <script src="../js/jquery-3.6.1.min.js"></script>
+    <script src="../js/watch.js"></script>
+    </body>
+</html>
