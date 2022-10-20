@@ -13,10 +13,14 @@ function loadVideo(event)
 
     $("#video-src").attr("src", URL.createObjectURL(videoFile))
     $("#video-src").attr("type", videoFile.type)
-    $("#video").get(0).load();
-
-    $("#watch-form").slideUp();
-    $("#watch-video").slideDown();
-    //let subtitlesFile = $("#subtitles-input").value;
-    //console.log(subtitlesFile);
+    $("#video").get(0).load()
+    
+    let subtitlesFile = $("#subtitles-input").get(0).files[0]
+    console.log(subtitlesFile)
+    let subtitlesReader = new SubtitlesReader(subtitlesFile)
+    subtitlesReader.loadFile()
+    console.log(subtitlesReader.subtitlesFileContents)
+    
+    $("#watch-form").slideUp()
+    $("#watch-video").slideDown()
 }
