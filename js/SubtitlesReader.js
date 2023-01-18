@@ -17,27 +17,22 @@ function SubtitlesReader(subtitlesFile) {
     this.processFile = function () {
         let subtitlesTrimmed = this.subtitlesFileContents.
             trim().
-            replace(/^\s+|\s+$/g,''). //Trim linebreaks
-            replaceAll('\r\n', '\n') //Unify line endings
+                replaceAll('\r\n', '\n'). //Unify line endings
+                    replaceAll('\n\n\n','\n\n') //Remove double empty lines
 
-        let subtitlesArr = subtitlesTrimmed.split('\n\n')
+        let srtParser = new SRT()
+        let subtitlesArr = srtParser.parse(subtitlesTrimmed)
+
         //Create the Subtitle objects
         this.subtitles = []
         let self = this
-        let timestampParser = new TimestampParser()
         subtitlesArr.forEach(function (item) {
-            let record = item.
-                replace(/^\s+|\s+$/g,''). //Trim linebreaks
-                split('\n')
-
-            let num = Number(record[0])
-            let timestampStrings = record[1].split(' --> ')
-            let timeFrom = timestampParser.parseTimestamp(timestampStrings[0])
-            let timeTo = timestampParser.parseTimestamp(timestampStrings[1])
-
-            let text = record[2]
-
-            self.subtitles.push(new Subtitle(timeFrom, timeTo, text))
+            let num = Number(item.id)
+            let timeFrom = item.time.start
+            let timeTo = item.time.end
+            let duration = item.time.duration
+            let text = item.content.join('\n');
+            self.subtitles.push(new Subtitle(num, timeFrom, timeTo, duration, text))
         })
     }
 
