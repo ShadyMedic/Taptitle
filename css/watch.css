@@ -1,3 +1,22 @@
 #watch-video {
     display: none;
 }
+
+.subtitle-word {
+    display: inline-block;
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+.subtitle-word:hover {
+    background-color: seagreen;
+    border-radius: 8px;
+    cursor: help;
+}
+
+#current-subtitles {
+    font-family: Ubuntu, Arial;
+    background-color: black;
+    color: gold;
+    padding: 16px;
+}
