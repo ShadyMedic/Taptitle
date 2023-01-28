@@ -6,8 +6,11 @@ $(function() {
 
 const language = "CS"
 const proxyUrl = "http://taptitle-backend.local/translate.php"
+
+var dictionary = new Dictionary()
 var subtitlesReader
 var subtitlesUpdater
+var translatedWord
 var displayedText
 
 function loadVideo(event)
@@ -31,6 +34,7 @@ function loadVideo(event)
 function playSubtitles()
 {
     subtitlesUpdater = setInterval(updateSubtitles, 500)
+    closeTranslation()
 }
 
 function pauseSubtitles()
@@ -60,7 +64,7 @@ function updateSubtitles()
 
 function sendToTranslate(event) {
     $("#video").get(0).pause()
-    let word = $(event.target).text().replace(/[\s,.?!]+$/, '').replace(/^[\s,.?!]+/, '')
+    translatedWord = $(event.target).text().replace(/[\s,.?!]+$/, '').replace(/^[\s,.?!]+/, '')
 
     //Send word to DeepL
     let xhr = new XMLHttpRequest()
@@ -72,7 +76,7 @@ function sendToTranslate(event) {
         if (xhr.readyState === 4) {
             displayTranslation(xhr.responseText);
         }};
-    let data = "text=" + word + "&target_lang=" + language;
+    let data = "text=" + translatedWord + "&target_lang=" + language;
 
     xhr.send(data);
 
@@ -103,7 +107,7 @@ function displayTranslation(deepLResponse)
     $activeBubble.find(".translation-bubble-loading").hide();
     $activeBubble.find(".translation-bubble-content").show();
 
-    //TODO save the word into memory
+    dictionary.addWord(translatedWord, word)
 }
 
 function closeTranslation()
@@ -114,6 +118,6 @@ function closeTranslation()
 
 function undoDictionaryEntry()
 {
-    //TODO
-    console.log("Adding to dictionary is not supported yet.");
+    dictionary.removeLastWord()
+    $("#current-translation .dictionary-notification").hide()
 }
