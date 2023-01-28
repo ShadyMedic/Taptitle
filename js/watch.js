@@ -4,6 +4,8 @@ $(function() {
     $("#video").on('pause', pauseSubtitles)
 })
 
+const language = "CS"
+const proxyUrl = "http://taptitle-backend.local/translate.php"
 var subtitlesReader
 var subtitlesUpdater
 var displayedText
@@ -52,17 +54,66 @@ function updateSubtitles()
 
     let words = line.generateSubtitleElements()
     $("#current-subtitles").html(words)
-    $(".subtitle-word").on("click", translate)
+    $(".subtitle-word").on("click", sendToTranslate)
     displayedText = line.text
 }
 
-function translate(event) {
+function sendToTranslate(event) {
     $("#video").get(0).pause()
-    let word = $(event.target).text()
-    //TODO send word to DeepL
-    //TODO receive the translation
-    //TODO display the translation
+    let word = $(event.target).text().replace(/[\s,.?!]+$/, '').replace(/^[\s,.?!]+/, '')
+
+    //Send word to DeepL
+    let xhr = new XMLHttpRequest()
+    xhr.open("POST", proxyUrl)
+
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            displayTranslation(xhr.responseText);
+        }};
+    let data = "text=" + word + "&target_lang=" + language;
+
+    xhr.send(data);
+
+    //Display the translation bubble
+    let element = $(".translation-bubble-wrapper").html()
+    $("#current-translation").html(element)
+    $("#current-translation .translation-bubble-close").on("click", closeTranslation)
+}
+
+function displayTranslation(deepLResponse)
+{
+    //Receive the translation
+    let response = JSON.parse(deepLResponse)
+    let word = response.translations[0].text
+
+    if ($("#current-translation").html() === "") {
+        //The bubble has been closed, most likely the translation was requested by accident – don't to anything
+        return
+    }
+
+    //Display the translation
+    let $activeBubble = $("#current-translation .translation-bubble");
+
+    word = word.replace(/[\s,.?!]+$/, '').replace(/^[\s,.?!]+/, '')
+    $activeBubble.find(".translation-bubble-word").text(word)
+    $activeBubble.find(".translation-bubble-undo").on("click", undoDictionaryEntry)
+
+    $activeBubble.find(".translation-bubble-loading").hide();
+    $activeBubble.find(".translation-bubble-content").show();
+
     //TODO save the word into memory
-    alert(word)
+}
+
+function closeTranslation()
+{
+    $("#current-translation").html("")
     $("#video").get(0).play()
+}
+
+function undoDictionaryEntry()
+{
+    //TODO
+    console.log("Adding to dictionary is not supported yet.");
 }

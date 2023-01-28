@@ -43,13 +43,34 @@
 
             </div>
             -->
+            <div id="current-translation">
+
+            </div>
         </div>
     </div>
 
     <div class="hidden">
+
         <div class="subtitle-word-wrapper">
             <div class="subtitle-word">{{{content}}}</div>
         </div>
+
+        <div class="translation-bubble-wrapper">
+            <div class="translation-bubble">
+                <button class="translation-bubble-close">×</button>
+                <div class="translation-bubble-loading">
+                    <img src="../img/loading.gif" alt="Loading" class="translation-bubble-loading" />
+                    <i>Translating...</i>
+                </div>
+                <div class="translation-bubble-content hidden">
+                    <span class="translation-bubble-word"></span>
+                    <hr />
+                    <span>Added to your personal dictionary.</span>
+                    <button class="translation-bubble-undo">Undo</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script src="../js/jquery-3.6.1.min.js"></script>
