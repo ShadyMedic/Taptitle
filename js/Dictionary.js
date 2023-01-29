@@ -27,7 +27,7 @@ function Dictionary()
     }
 
     this.getWordCount = function() {
-        return this.getDictionary().length;
+        return this.getDictionary().length
     }
 
     this.exportJson = function() {

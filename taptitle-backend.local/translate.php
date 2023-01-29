@@ -6,7 +6,8 @@ const USER_AGENT = 'Taptitle/0.0.1';
 
 ######################################################################
 
-function logMessage($message) {
+function logMessage($message)
+{
     file_put_contents('backend.log', $message.PHP_EOL, FILE_APPEND);
 }
 
@@ -15,14 +16,16 @@ function logMessage($message) {
 if (!empty($_GET)) {
     logMessage('Reading from GET variables');
     $word = $_GET['text'];
+    $sourceLang = $_GET['source_lang'];
     $targetLang = $_GET['target_lang'];
 } else {
     logMessage('Reading from POST variables');
     $word = $_POST['text'];
+    $sourceLang = $_POST['source_lang'];
     $targetLang = $_POST['target_lang'];
 }
 
-logMessage('Forwarding request to translate '.$word.' to language with code '.$targetLang);
+logMessage('Forwarding request to translate '.$word.' to language with code '.$targetLang.' from language with code '.$sourceLang);
 
 $curl = curl_init(TARGET_URL);
 curl_setopt($curl, CURLOPT_URL, TARGET_URL);
@@ -34,7 +37,7 @@ $headers = array(
     'Content-Type: application/x-www-form-urlencoded',
 );
 curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-$data = "text=$word&target_lang=$targetLang";
+$data = "text=$word&source_lang=$sourceLang&target_lang=$targetLang";
 curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 
 $response = curl_exec($curl);

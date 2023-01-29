@@ -12,14 +12,22 @@ $(function() {
 
     //Summary popups buttons
     $(".dictionary-export-info-close").on('click', closeDictionaryExportInfo)
-    $(".apkg-download-file").on('click', downloadApkgDictionary);
-    $(".csv-download-file").on('click', downloadCsvDictionary);
-    $(".keep-dictionary-confirm").on('click', resetView);
-    $(".empty-dictionary-confirm").on('click', emptyDictionary);
+    $(".apkg-download-file").on('click', downloadApkgDictionary)
+    $(".csv-download-file").on('click', downloadCsvDictionary)
+    $(".keep-dictionary-confirm").on('click', resetView)
+    $(".empty-dictionary-confirm").on('click', emptyDictionary)
     $(".post-export-dictionary-wipe").on('click', emptyDictionary)
+
+    if (['', null, undefined].indexOf(window.localStorage.getItem('lastSourceLang')) === -1) {
+        $("#source-language-input").val(window.localStorage.getItem('lastSourceLang'))
+    }
+    if (['', null, undefined].indexOf(window.localStorage.getItem('lastTargetLang')) === -1) {
+        $("#target-language-input").val(window.localStorage.getItem('lastTargetLang'))
+    }
 })
 
-const language = "CS"
+var sourceLanguage = ""
+var targetLanguage = ""
 const proxyUrl = "http://taptitle-backend.local/translate.php"
 
 var dictionary = new Dictionary()
@@ -41,7 +49,13 @@ function loadVideo(event)
     let subtitlesFile = $("#subtitles-input").get(0).files[0]
     subtitlesReader = new SubtitlesReader(subtitlesFile)
     subtitlesReader.loadFile()
-    
+
+    sourceLanguage = $("#source-language-input").val()
+    targetLanguage = $("#target-language-input").val()
+
+    window.localStorage.setItem('lastSourceLang', sourceLanguage)
+    window.localStorage.setItem('lastTargetLang', targetLanguage)
+
     $("#watch-form").slideUp()
     $("#watch-video").slideDown()
 }
@@ -89,11 +103,11 @@ function sendToTranslate(event) {
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-            displayTranslation(xhr.responseText);
-        }};
-    let data = "text=" + translatedWord + "&target_lang=" + language;
+            displayTranslation(xhr.responseText)
+        }}
+    let data = "text=" + translatedWord + "&source_lang=" + sourceLanguage + "&target_lang=" + targetLanguage
 
-    xhr.send(data);
+    xhr.send(data)
 
     //Display the translation bubble
     let element = $("#translation-bubble-wrapper").html()
@@ -113,14 +127,14 @@ function displayTranslation(deepLResponse)
     }
 
     //Display the translation
-    let $activeBubble = $("#current-translation .translation-bubble");
+    let $activeBubble = $("#current-translation .translation-bubble")
 
     word = word.replace(/[\s,.?!]+$/, '').replace(/^[\s,.?!]+/, '')
     $activeBubble.find(".translation-bubble-word").text(word)
     $activeBubble.find(".translation-bubble-undo").on("click", undoDictionaryEntry)
 
-    $activeBubble.find(".translation-bubble-loading").hide();
-    $activeBubble.find(".translation-bubble-content").show();
+    $activeBubble.find(".translation-bubble-loading").hide()
+    $activeBubble.find(".translation-bubble-content").show()
 
     dictionary.addWord(translatedWord, word)
 }

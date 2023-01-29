@@ -14,11 +14,81 @@
     <form id="watch-form">
         <fieldset>
             <label for="video-input">Step 1: Select a video file:</label>
-            <input id="video-input" type="file" accept="video/*"/>
+            <input id="video-input" type="file" accept="video/*" required />
         </fieldset>
         <fieldset>
             <label for="subtitles-input">Step 2: Select a subtitles file:</label>
-            <input id="subtitles-input" type="file" accept=".srt" />
+            <input id="subtitles-input" type="file" accept=".srt" required />
+        </fieldset>
+        <fieldset>
+            <label for="source-language-input">Step 3: Select the source language:</label>
+            <select id="source-language-input" required>
+                <option selected disabled hidden></option>
+                <option value="BG">Bulgarian</option>
+                <option value="CS">Czech</option>
+                <option value="DA">Danish</option>
+                <option value="DE">German</option>
+                <option value="EL">Greek</option>
+                <option value="EN">English</option>
+                <option value="ES">Spanish</option>
+                <option value="ET">Estonian</option>
+                <option value="FI">Finnish</option>
+                <option value="FR">French</option>
+                <option value="HU">Hungarian</option>
+                <option value="ID">Indonesian</option>
+                <option value="IT">Italian</option>
+                <option value="JA">Japanese</option>
+                <option value="LT">Lithuanian</option>
+                <option value="LV">Latvian</option>
+                <option value="NL">Dutch</option>
+                <option value="PL">Polish</option>
+                <option value="PT">Portuguese</option>
+                <option value="RO">Romanian</option>
+                <option value="RU">Russian</option>
+                <option value="SK">Slovak</option>
+                <option value="SL">Slovenian</option>
+                <option value="SV">Swedish</option>
+                <option value="TR">Turkish</option>
+                <option value="UK">Ukrainian</option>
+                <option value="ZH">Chinese (simplified)</option>
+                <option disabled>Other languages are not supported by the translator.</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label for="target-language-input">Step 4: Select your native language:</label>
+            <select id="target-language-input" required>
+                <option selected disabled hidden></option>
+                <option value="BG">Bulgarian</option>
+                <option value="CS">Czech</option>
+                <option value="DA">Danish</option>
+                <option value="DE">German</option>
+                <option value="EL">Greek</option>
+                <option value="EN-GB">English (British)</option>
+                <option value="EN-US">English (American)</option>
+                <option value="ES">Spanish</option>
+                <option value="ET">Estonian</option>
+                <option value="FI">Finnish</option>
+                <option value="FR">French</option>
+                <option value="HU">Hungarian</option>
+                <option value="ID">Indonesian</option>
+                <option value="IT">Italian</option>
+                <option value="JA">Japanese</option>
+                <option value="LT">Lithuanian</option>
+                <option value="LV">Latvian</option>
+                <option value="NL">Dutch</option>
+                <option value="PL">Polish</option>
+                <option value="PT-BR">Portuguese (Brazilian)</option>
+                <option value="PT-PT">Portuguese (European)</option>
+                <option value="RO">Romanian</option>
+                <option value="RU">Russian</option>
+                <option value="SK">Slovak</option>
+                <option value="SL">Slovenian</option>
+                <option value="SV">Swedish</option>
+                <option value="TR">Turkish</option>
+                <option value="UK">Ukrainian</option>
+                <option value="ZH">Chinese (simplified)</option>
+                <option disabled>Other languages are not supported by the translator.</option>
+            </select>
         </fieldset>
         <input id="watch-form-submit" type="submit" value="Load" />
     </form>
