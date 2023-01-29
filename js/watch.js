@@ -111,8 +111,8 @@ function sendToTranslate(event) {
 
     //Display the translation bubble
     let element = $("#translation-bubble-wrapper").html()
-    $("#current-translation").html(element)
-    $("#current-translation .translation-bubble-close").on("click", closeTranslation)
+    $(event.target).closest(".translatable-unit").find(".translation-area").html(element)
+    $(".translation-area .translation-bubble-close").on("click", closeTranslation)
 }
 
 function displayTranslation(deepLResponse)
@@ -121,13 +121,13 @@ function displayTranslation(deepLResponse)
     let response = JSON.parse(deepLResponse)
     let word = response.translations[0].text
 
-    if ($("#current-translation").html() === "") {
+    if ($(".translatable-unit .translation-area .translation-bubble").get(0) === undefined) {
         //The bubble has been closed, most likely the translation was requested by accident – don't to anything
         return
     }
 
     //Display the translation
-    let $activeBubble = $("#current-translation .translation-bubble")
+    let $activeBubble = $(".translation-area .translation-bubble")
 
     word = word.replace(/[\s,.?!]+$/, '').replace(/^[\s,.?!]+/, '')
     $activeBubble.find(".translation-bubble-word").text(word)
@@ -141,14 +141,14 @@ function displayTranslation(deepLResponse)
 
 function closeTranslation()
 {
-    $("#current-translation").html("")
+    $(".translation-area").html("")
     $("#video").get(0).play()
 }
 
 function undoDictionaryEntry()
 {
     dictionary.removeLastWord()
-    $("#current-translation .dictionary-notification").hide()
+    $(".translation-area .translation-bubble .dictionary-notification").hide()
 }
 
 function displaySummary()

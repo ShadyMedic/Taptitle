@@ -1,4 +1,4 @@
-.subtitle-word {
+.translatable-unit {
     display: inline-block;
     font-size: 2rem;
     line-height: 2rem;
@@ -15,6 +15,22 @@
     background-color: black;
     color: gold;
     padding: 16px;
+}
+
+.translation-area {
+    height: 2rem;
+    position: fixed;
+}
+
+.translation-bubble {
+    border: 1px solid white;
+    border-radius: 16px;
+    padding: 10px;
+    z-index: 5;
+    position: absolute;
+    top: -200px;
+    background-color: gold;
+    color: black;
 }
 
 #summary-overlay {
