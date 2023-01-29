@@ -22,8 +22,8 @@
         </fieldset>
         <input id="watch-form-submit" type="submit" value="Load" />
     </form>
-    
-    <div id="watch-video">
+
+    <div id="watch-video" class="hidden">
         <video id="video" controls>
             <source id="video-src" src="#">
             An error occurred – either your browser doesn't support the required features,
@@ -49,13 +49,108 @@
         </div>
     </div>
 
+    <div id="summary" class="hidden">
+        <h2>Congrats, you finished the video.</h2>
+        <p>Your personal dictionary now contains <b><span class="wordcount">{{{wordcount}}}</span> words</b>.</p>
+        <p>Choose what you want to do with them:</p>
+        <button class="apkg-download">Download as Anki package</button>
+        <button class="csv-download">Import to Quizlet</button>
+        <button class="keep-dictionary">Keep the words saved</button>
+        <button class="empty-dictionary">Empty the dictionary</button>
+        <div id="dictionary-export-details" class="hidden">
+            <div id="summary-overlay"></div>
+
+            <section id="apkg-download-info" class="card hidden">
+                <button class="dictionary-export-info-close">×</button>
+                <h3>Download as an Anki package</h3>
+                <p>This feature is not available yet, I'm working on it (probably not at this very moment though).</p>
+                <p>
+                    You can circumvent this by importing your dictionary into Quizlet and then using
+                    <a href="https://ankiweb.net/shared/info/1362209126" target="_blank">this</a> Anki Add-on
+                    to import from Quizlet into Anki.
+                </p>
+                <small><a href="https://apps.ankiweb.net/" target="_blank">More about Anki</a></small>
+                <hr />
+                <div class="txt-c"><button class="apkg-download-file">Coming soon...</button></div>
+                <hr />
+                <p>
+                    It is recommended to empty your dictionary after exporting it,
+                    so you don't export the same words again next time.
+                </p>
+                <p>Click <a class="post-export-dictionary-wipe">here</a> to empty your dictionary.</p>
+            </section>
+
+            <section id="csv-download-info" class="card hidden">
+                <button class="dictionary-export-info-close">×</button>
+                <h3>Import into Quizlet</h3>
+                <p>
+                    You can export your dictionary as CSV (<b>C</b>oma <b>S</b>eparated <b>V</b>alues)
+                    and then use it in Quizlet's "import" feature.
+                </p>
+                <p>
+                    If this is your first time using this feature, I prepared
+                    <a href="../files/Taptitle-quizlet-import-tutorial.pdf" target="_blank">a simple tutorial in PDF</a>
+                    for you.
+                </p>
+                <small><a href="https://quizlet.com/" target="_blank">More about Quizlet</a></small>
+                <hr />
+                <label for="csv-export-field">Copy the text below into Quizlet:</label>
+                <textarea id="csv-export-field" rows="6" readonly="readonly">{{{csv}}}</textarea>
+                <div class="txt-c">
+                    <button class="csv-download-file">Download as a CSV file.</button>
+                    <a id="csv-file-handle" class="hidden"></a> <!-- JavaScript uses this to download the generated file -->
+                </div>
+                <hr />
+                <p>
+                    It is recommended to empty your dictionary after exporting it,
+                    so you don't export the same words again next time.
+                </p>
+                <p>Click <a class="post-export-dictionary-wipe">here</a> to empty your dictionary.</p>
+            </section>
+
+            <section id="keep-dictionary-info" class="card hidden">
+                <button class="dictionary-export-info-close">×</button>
+                <h3>Keep the dictionary as it is</h3>
+                <p>
+                    You can keep your new vocabulary from this video in your dictionary without exporting it,
+                    however, I don't recommend doing so, unless you're binge-watching multiple videos and want to export
+                    everything after finishing the last one.
+                </p>
+                <p>
+                    Taptitle saves your dictionary in your browser's local storage, which can sometimes be wiped
+                    by disk cleanup applications or by the browser itself, under certain circumstances. Data stored in
+                    this storage are also lost, if you reinstall your browser and do not transfer between multiple
+                    browsers.
+                </p>
+                <p>
+                    Last but not least, if your dictionary contains many entries, Taptitle might be slower than usual.
+                </p>
+                <hr />
+                <div class="txt-c"><button class="keep-dictionary-confirm">I understand the risks, let me select the next video.</button></div>
+            </section>
+
+            <section id="empty-dictionary-info" class="card hidden">
+                <button class="dictionary-export-info-close">×</button>
+                <h3>Empty your dictionary</h3>
+                <p>
+                    This will permanently delete all entries from your personal dictionary.
+                </p>
+                <p>
+                    Be aware, that this action cannot be undone.
+                </p>
+                <hr />
+                <div class="txt-c"><button class="empty-dictionary-confirm">I understand, wipe my dictionary please.</button></div>
+            </section>
+        </div>
+    </div>
+
     <div class="hidden">
 
-        <div class="subtitle-word-wrapper">
+        <div id="subtitle-word-wrapper">
             <div class="subtitle-word">{{{content}}}</div>
         </div>
 
-        <div class="translation-bubble-wrapper">
+        <div id="translation-bubble-wrapper">
             <div class="translation-bubble">
                 <button class="translation-bubble-close">×</button>
                 <div class="translation-bubble-loading">

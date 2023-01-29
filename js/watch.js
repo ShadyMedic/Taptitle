@@ -2,6 +2,21 @@ $(function() {
     $("#watch-form").on('submit', loadVideo)
     $("#video").on('play', playSubtitles)
     $("#video").on('pause', pauseSubtitles)
+    $("#video").on('ended', displaySummary)
+
+    //Summary buttons
+    $('#summary .apkg-download').on('click', function() { displayDictionaryExportInfo('#apkg-download-info') })
+    $("#summary .csv-download").on('click', function() { displayDictionaryExportInfo('#csv-download-info') })
+    $("#summary .keep-dictionary").on('click', function() { displayDictionaryExportInfo('#keep-dictionary-info') })
+    $("#summary .empty-dictionary").on('click', function() { displayDictionaryExportInfo('#empty-dictionary-info') })
+
+    //Summary popups buttons
+    $(".dictionary-export-info-close").on('click', closeDictionaryExportInfo)
+    $(".apkg-download-file").on('click', downloadApkgDictionary);
+    $(".csv-download-file").on('click', downloadCsvDictionary);
+    $(".keep-dictionary-confirm").on('click', resetView);
+    $(".empty-dictionary-confirm").on('click', emptyDictionary);
+    $(".post-export-dictionary-wipe").on('click', emptyDictionary)
 })
 
 const language = "CS"
@@ -81,7 +96,7 @@ function sendToTranslate(event) {
     xhr.send(data);
 
     //Display the translation bubble
-    let element = $(".translation-bubble-wrapper").html()
+    let element = $("#translation-bubble-wrapper").html()
     $("#current-translation").html(element)
     $("#current-translation .translation-bubble-close").on("click", closeTranslation)
 }
@@ -120,4 +135,54 @@ function undoDictionaryEntry()
 {
     dictionary.removeLastWord()
     $("#current-translation .dictionary-notification").hide()
+}
+
+function displaySummary()
+{
+    $(".wordcount").text(dictionary.getWordCount())
+    $("#csv-export-field").text(dictionary.exportCsv())
+
+    $("#watch-video").slideUp()
+    $("#summary").slideDown()
+}
+
+function displayDictionaryExportInfo(wrapperId)
+{
+    $(wrapperId).show()
+    $("#dictionary-export-details").show()
+}
+
+function closeDictionaryExportInfo()
+{
+    $("#dictionary-export-details").hide()
+    $("#dictionary-export-details > section").hide()
+}
+
+function downloadApkgDictionary() {
+    alert("This feature is not available yet.")
+}
+
+function downloadCsvDictionary() {
+    let csvContent = "data:text/csv;charset=utf-8,"
+    csvContent += dictionary.exportCsv()
+    let encodedUri = encodeURI(csvContent)
+    $("#csv-file-handle").attr("href", encodedUri)
+    $("#csv-file-handle").attr("download", "Taptitle_dictionary.csv")
+    $("#csv-file-handle").get(0).click()
+}
+
+function resetView() {
+    $("#video-input").val("")
+    $("#subtitles-input").val("")
+
+    closeDictionaryExportInfo()
+    $("#summary").slideUp()
+    $("#watch-video").slideUp()
+    $("#watch-form").slideDown()
+}
+
+function emptyDictionary() {
+    dictionary.clear()
+    closeDictionaryExportInfo()
+    resetView()
 }

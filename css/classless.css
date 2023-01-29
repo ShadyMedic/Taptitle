@@ -62,8 +62,7 @@ body > footer { margin: 10rem 0rem 0rem; font-size: 90%; }
 p { margin: .6em 0; }
 
 /* links */
-a[href]{ text-decoration: underline solid var(--cmed); text-underline-position: under; }
-a[href^="#"] {text-decoration: none; }
+a{ text-decoration: underline solid var(--cmed); text-underline-position: under; }
 a:hover, button:not([disabled]):hover, summary:hover {
     filter: brightness(92%); color: var(--cemph); border-color: var(--cemph);
 }

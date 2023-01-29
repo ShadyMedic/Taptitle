@@ -8,7 +8,7 @@ function Subtitle(num, timeFrom, timeTo, duration, text)
 
     this.generateSubtitleElements = function() {
         const elements = []
-        let template = $(".subtitle-word-wrapper").html()
+        let template = $("#subtitle-word-wrapper").html()
         let words = this.text.replaceAll('\n', ' ').split(' ')
         words.forEach(function (item) {
             item = item.trim()

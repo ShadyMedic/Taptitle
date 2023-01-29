@@ -1,7 +1,3 @@
-#watch-video {
-    display: none;
-}
-
 .subtitle-word {
     display: inline-block;
     font-size: 2rem;
@@ -19,4 +15,45 @@
     background-color: black;
     color: gold;
     padding: 16px;
+}
+
+#summary-overlay {
+    z-index: 9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.4;
+}
+
+#dictionary-export-details > section {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 50vw;
+    max-height: 75vh;
+    height: fit-content;
+    overflow-y: auto;
+}
+
+#dictionary-export-details section{
+    background-color: white;
+}
+
+.dictionary-export-info-close {
+    float: right;
+}
+
+#csv-export-field {
+    font-family: Consolas, Monospaced;
+    font-size: small;
+    background-color: #ccc;
+    width: 100%;
+    resize: none;
 }

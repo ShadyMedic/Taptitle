@@ -26,17 +26,21 @@ function Dictionary()
         this.saveDictionary(dict)
     }
 
+    this.getWordCount = function() {
+        return this.getDictionary().length;
+    }
+
     this.exportJson = function() {
         return JSON.stringify(this.getDictionary())
     }
 
     this.exportCsv = function() {
-        let csv = 'original,translation\n' //Header line
         let dict = this.getDictionary()
+        csv = ""
         dict.forEach(function(item) {
             csv += item.word + ',' + item.translation + '\n'
         })
-        return csv
+        return csv.trimEnd()
     }
 
     this.exportApkg = function() {
