@@ -115,6 +115,8 @@ function sendToTranslate(event) {
     let element = $("#translation-bubble-wrapper").html()
     $(event.target).closest(".translatable-unit").find(".translation-area").html(element)
     $(".translation-area .translation-bubble-close").on("click", closeTranslation)
+
+    alignTranslationBubble($(event.target))
 }
 
 function displayTranslation(deepLResponse)
@@ -138,6 +140,8 @@ function displayTranslation(deepLResponse)
     $activeBubble.find(".translation-bubble-loading").hide()
     $activeBubble.find(".translation-bubble-content").show()
 
+    alignTranslationBubble($(".translation-area .translation-bubble").closest(".translatable-unit").find('.subtitle-word'))
+
     dictionary.addWord(translatedWord, word)
 }
 
@@ -151,6 +155,21 @@ function undoDictionaryEntry()
 {
     dictionary.removeLastWord()
     $(".translation-area .translation-bubble .dictionary-notification").hide()
+    alignTranslationBubble($(".translation-area .translation-bubble").closest(".translatable-unit").find('.subtitle-word'))
+}
+
+function alignTranslationBubble($clickedSubtitle)
+{
+    //Horizontal align (center the bubble above the word)
+    let wordWidth = Number($clickedSubtitle.css('width').match(/\d+/)[0]) //Doesn't round - discards the decimal part
+    let bubbleWidth = Number($(".translation-area .translation-bubble").css("width").match(/\d+/)[0])
+    let leftOffset = ((bubbleWidth / 2) - (wordWidth / 2)) * -1
+    $(".translation-area .translation-bubble").css("margin-left", leftOffset + "px");
+
+    //Vertical align (move the bubble above the word)
+    let bubbleHeight = Number($(".translation-area .translation-bubble").css("height").match(/\d+/)[0])
+    let topOffset = ((bubbleHeight) + 16) * -1 //16px is the height of the bubble's "beak"
+    $(".translation-area .translation-bubble").css("top", topOffset + "px");
 }
 
 function displaySummary()

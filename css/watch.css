@@ -1,3 +1,9 @@
+/* Declarations */
+@keyframes spinning {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(360deg) }
+}
+
 /* Watch section */
 #video {
     position: absolute;
@@ -10,7 +16,7 @@
 
 #subtitles-area {
     position: absolute;
-    bottom: 0vh;
+    bottom: 0;
     left: 0;
     height: -webkit-fill-available;
     max-height: 15vh;
@@ -31,26 +37,76 @@
 }
 
 #current-subtitles {
-    font-family: Ubuntu, Arial;
+    font-family: Ubuntu, Arial, serif;
     background-color: #222;
     color: gold;
     padding: 16px;
 }
 
-.translation-area {
-    height: 2rem;
-    position: fixed;
-}
-
 .translation-bubble {
-    border: 1px solid white;
-    border-radius: 16px;
+    position: absolute;
+    border: 5px solid orange;
+    border-radius: 20px;
     padding: 10px;
     z-index: 5;
-    position: absolute;
-    top: -200px;
     background-color: gold;
     color: black;
+    width: 300px;
+    font-size: 1.2rem;
+}
+
+.translation-bubble:after {
+    content: "";
+    position: absolute;
+    bottom: -18px;
+    left: 128px; /* Don't ask me why 128, it just looks the best on my machine */
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 16px solid orange;
+}
+
+.translation-bubble-loading {
+    margin: 8px 0;
+}
+
+.translation-bubble-loading-img {
+    height: 1.2rem;
+    position: relative;
+    top: 2px;
+    /* Code copied from https://code-boxx.com/rotate-spin-image-html-css/ */
+    animation-name: spinning;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    /* Animation declaration at the start of this file was also copied */
+    /* End of copied code */
+}
+
+.translation-bubble-close {
+    position:absolute;
+    top: 8px;
+    right: 8px;
+    float: right;
+    height: 32px;
+    width: 32px;
+    background-image: url("../img/close.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: yellow;
+    border: 1px solid orange;
+    border-radius: 10px;
+}
+
+.dictionary-notification {
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.translation-bubble-undo {
+    display: block;
+    margin: auto;
+    padding: 4px;
+    line-height: 1rem;
 }
 
 /* Summary section */
@@ -89,7 +145,7 @@
 }
 
 #csv-export-field {
-    font-family: Consolas, Monospaced;
+    font-family: Consolas, monospace;
     font-size: small;
     background-color: #ccc;
     width: 100%;
