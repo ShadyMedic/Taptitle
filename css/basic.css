@@ -3,6 +3,8 @@
     --border: #b4d5fe;
     --border-hover: #2c3640;
     --border-click: #586c80;
+    --link-underline: #82b7ff;
+    --link-hover: #425c80;
     --active-fieldset-background: #ecf5ff;
 }
 
@@ -11,12 +13,26 @@
 }
 
 body {
-    font-family: Ubuntu, Arial, Serif;
+    font-family: Ubuntu, Arial, serif;
     font-size: 1.4em;
 }
 
+a {
+    text-decoration: underline solid var(--link-underline);
+    text-underline-position: under;
+    cursor: pointer;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
 fieldset {
-    margin: 0.5rem 0rem 1rem;
+    margin: 0.5rem 0 1rem;
     border: 1px solid var(--border);
     border-radius: 4px;
     padding: .5em 1em;
@@ -42,14 +58,38 @@ textarea:focus, input:not([type=checkbox]):not([type*='ra']):focus, select:focus
 }
 
 textarea, input:not([type=range]), button, select {
-    font: var(--font-h);
+    font: inherit;
     border-radius: 4px;
     border: 1px solid var(--border);
     padding: 0.4em 0.8em;
 }
 
+button {
+    background-color: floralwhite;
+    margin: .5em;
+    border: 1px solid black;
+    padding: 0.4em 1em;
+    font-size: 85%;
+    letter-spacing: 0.1em;
+}
+
+a:hover, button:not([disabled]):hover, summary:hover {
+    filter: brightness(92%);
+    border-color: black;
+}
+
 fieldset select {
     background-color: #fff0;
+}
+
+.card {
+    outline: 1px solid var(--border);
+    display: block;
+    margin: 0.5rem 0 1rem;
+    padding: 0 1rem;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: white;
 }
 
 .centered {

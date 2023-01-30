@@ -16,7 +16,7 @@ $(function() {
     $(".csv-download-file").on('click', downloadCsvDictionary)
     $(".keep-dictionary-confirm").on('click', resetView)
     $(".empty-dictionary-confirm").on('click', emptyDictionary)
-    $(".post-export-dictionary-wipe").on('click', emptyDictionary)
+    $(".post-export-dictionary-wipe").on('click', postExportDictionaryWipe)
 
     if (['', null, undefined].indexOf(window.localStorage.getItem('lastSourceLang')) === -1) {
         $("#source-language-input").val(window.localStorage.getItem('lastSourceLang'))
@@ -114,7 +114,7 @@ function sendToTranslate(event) {
     //Display the translation bubble
     let element = $("#translation-bubble-wrapper").html()
     $(event.target).closest(".translatable-unit").find(".translation-area").html(element)
-    $(".translation-area .translation-bubble-close").on("click", closeTranslation)
+    $(".translation-area .close-button").on("click", closeTranslation)
 
     alignTranslationBubble($(event.target))
 }
@@ -222,4 +222,9 @@ function emptyDictionary() {
     dictionary.clear()
     closeDictionaryExportInfo()
     resetView()
+}
+
+function postExportDictionaryWipe() {
+    closeDictionaryExportInfo()
+    displayDictionaryExportInfo('#empty-dictionary-info')
 }

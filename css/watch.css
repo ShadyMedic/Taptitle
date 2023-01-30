@@ -82,19 +82,18 @@
     /* End of copied code */
 }
 
-.translation-bubble-close {
+.close-button {
     position:absolute;
-    top: 8px;
-    right: 8px;
+    top: 0;
+    right: 0;
     float: right;
     height: 32px;
     width: 32px;
     background-image: url("../img/close.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-color: yellow;
-    border: 1px solid orange;
-    border-radius: 10px;
+    border: none;
+    background-color: blanchedalmond;
 }
 
 .dictionary-notification {
@@ -134,14 +133,6 @@
     max-height: 75vh;
     height: fit-content;
     overflow-y: auto;
-}
-
-#dictionary-export-details section{
-    background-color: white;
-}
-
-.dictionary-export-info-close {
-    float: right;
 }
 
 #csv-export-field {
