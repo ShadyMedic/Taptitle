@@ -5,6 +5,7 @@ $(function() {
     $("#video").on('ended', displaySummary)
 
     //Summary buttons
+    $("#summary .replay-button").on('click', replayVideo)
     $('#summary .apkg-download').on('click', function() { displayDictionaryExportInfo('#apkg-download-info') })
     $("#summary .csv-download").on('click', function() { displayDictionaryExportInfo('#csv-download-info') })
     $("#summary .keep-dictionary").on('click', function() { displayDictionaryExportInfo('#keep-dictionary-info') })
@@ -56,8 +57,8 @@ function loadVideo(event)
     window.localStorage.setItem('lastSourceLang', sourceLanguage)
     window.localStorage.setItem('lastTargetLang', targetLanguage)
 
-    $("#watch-form").slideUp()
-    $("#watch-video").slideDown()
+    $("#watch-form").hide()
+    $("#watch-video").show()
     $("body").css('background-color', '#222');
     $("#current-subtitles").css('visibility', 'visible');
 }
@@ -179,8 +180,19 @@ function displaySummary()
 
     $("body").css('background-color', 'unset');
     $("#current-subtitles").css('visibility', 'hidden');
-    $("#watch-video").slideUp()
-    $("#summary").slideDown()
+    $("#watch-video").hide()
+    $("#summary").show()
+}
+
+function replayVideo()
+{
+    //Rewind the video a little (to the beginning, if it's less than 10 seconds long)
+    $("#video").get(0).currentTime = ($("#video").get(0).currentTime > 10) ? ($("#video").get(0).currentTime - 5) : 0
+
+    $("body").css('background-color', '#222');
+    $("#current-subtitles").css('visibility', 'visible');
+    $("#watch-video").show()
+    $("#summary").hide()
 }
 
 function displayDictionaryExportInfo(wrapperId)
@@ -214,7 +226,7 @@ function resetView() {
 
     closeDictionaryExportInfo()
     $("#summary").slideUp()
-    $("#watch-video").slideUp()
+    $("#watch-video").hide()
     $("#watch-form").slideDown()
 }
 
