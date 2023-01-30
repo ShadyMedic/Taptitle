@@ -58,6 +58,8 @@ function loadVideo(event)
 
     $("#watch-form").slideUp()
     $("#watch-video").slideDown()
+    $("body").css('background-color', '#222');
+    $("#current-subtitles").css('visibility', 'visible');
 }
 
 function playSubtitles()
@@ -156,6 +158,8 @@ function displaySummary()
     $(".wordcount").text(dictionary.getWordCount())
     $("#csv-export-field").text(dictionary.exportCsv())
 
+    $("body").css('background-color', 'unset');
+    $("#current-subtitles").css('visibility', 'hidden');
     $("#watch-video").slideUp()
     $("#summary").slideDown()
 }

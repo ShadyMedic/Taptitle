@@ -1,3 +1,23 @@
+/* Watch section */
+#video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-height: 80vh;
+    width: 100vw;
+    background-color: black;
+}
+
+#subtitles-area {
+    position: absolute;
+    bottom: 0vh;
+    left: 0;
+    height: -webkit-fill-available;
+    max-height: 15vh;
+    width: 100vw;
+    text-align: center;
+}
+
 .translatable-unit {
     display: inline-block;
     font-size: 2rem;
@@ -12,7 +32,7 @@
 
 #current-subtitles {
     font-family: Ubuntu, Arial;
-    background-color: black;
+    background-color: #222;
     color: gold;
     padding: 16px;
 }
@@ -32,6 +52,8 @@
     background-color: gold;
     color: black;
 }
+
+/* Summary section */
 
 #summary-overlay {
     z-index: 9;

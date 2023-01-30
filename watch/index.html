@@ -2,16 +2,18 @@
 <html lang="en">
     <head>
         <title>Taptitle</title>
-        <link rel="stylesheet" href="../css/classless.css" />
+        <link rel="stylesheet" href="../css/basic.css" />
         <link rel="stylesheet" href="../css/common.css" />
         <link rel="stylesheet" href="../css/watch.css" />
         <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
     </head>
     <body>
 
-    <h1>Watch a video</h1>
-    <h4>In the current version of Taptitle, only locally downloaded videos can be watched.</h4>
-    <form id="watch-form">
+    <header class="centered">
+        <h1>Watch a video</h1>
+        <h4>In the current version of Taptitle, only locally downloaded videos can be watched.</h4>
+    </header>
+    <form id="watch-form" class="centered">
         <fieldset>
             <label for="video-input">Step 1: Select a video file:</label>
             <input id="video-input" type="file" accept="video/*" required />
@@ -106,7 +108,7 @@
         </div>
     </div>
 
-    <div id="summary" class="hidden">
+    <div id="summary" class="centered hidden">
         <h2>Congrats, you finished the video.</h2>
         <p>Your personal dictionary now contains <b><span class="wordcount">{{{wordcount}}}</span> words</b>.</p>
         <p>Choose what you want to do with them:</p>
