@@ -95,6 +95,11 @@ function updateSubtitles()
 }
 
 function sendToTranslate(event) {
+    if ($(".translatable-unit .translation-area .translation-bubble").get(0) !== undefined) {
+        //A different word is already being translated – don't do anything
+        return
+    }
+
     $("#video").get(0).pause()
     translatedWord = $(event.target).text().replace(/[\s,.?!]+$/, '').replace(/^[\s,.?!]+/, '')
 
@@ -228,6 +233,8 @@ function resetView() {
     $("#summary").slideUp()
     $("#watch-video").hide()
     $("#watch-form").slideDown()
+
+    $("#current-subtitles").text('Play the video to start.');
 }
 
 function emptyDictionary() {
