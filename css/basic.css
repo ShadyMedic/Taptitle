@@ -97,3 +97,9 @@ fieldset select {
     margin: auto;
     max-width: var(--width);
 }
+
+.title {
+    margin-top: 4.5em;
+    margin-bottom: 0.5em;
+    text-align: center;
+}

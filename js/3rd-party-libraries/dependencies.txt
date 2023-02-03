@@ -3,3 +3,15 @@ https://code.jquery.com/jquery-3.6.1.min.js
 
 srt-parser.js
 https://raw.githubusercontent.com/VAS/srt.js/master/srt.js
+
+FileSaver.min.js
+https://raw.githubusercontent.com/eligrey/FileSaver.js/master/dist/FileSaver.min.js
+
+genanki.js
+https://raw.githubusercontent.com/krmanik/genanki-js/main/dist/genanki.js
+
+jszip.min.js
+https://raw.githubusercontent.com/Stuk/jszip/main/dist/jszip.min.js
+
+sql.js
+https://raw.githubusercontent.com/krmanik/genanki-js/main/sample/js/sql/sql.js
