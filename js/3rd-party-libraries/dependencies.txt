@@ -1,0 +1,5 @@
+jquery-3.6.1.min.js
+https://code.jquery.com/jquery-3.6.1.min.js
+
+srt-parser.js
+https://raw.githubusercontent.com/VAS/srt.js/master/srt.js
