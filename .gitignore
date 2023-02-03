@@ -1,3 +1,5 @@
 .idea/
 files/*.pdf
+js/3rd-party-libraries/*
+!js/3rd-party-libraries/*.txt
 taptitle-backend.local/backend.log
