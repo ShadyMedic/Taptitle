@@ -1,3 +1,9 @@
+.title {
+    margin-top: 4.5em;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
 #options {
     display: flex;
     justify-content: center;
@@ -6,4 +12,12 @@
 .card {
     margin: 10px;
     min-width: 200px;
+    padding: 0 .6rem;
+    border-radius: 4px;
+    line-height: 2em;
+}
+
+a {
+    text-decoration: underline solid #b4d5fe;
+    text-underline-position: under;
 }
