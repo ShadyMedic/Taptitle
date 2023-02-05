@@ -92,6 +92,10 @@ fieldset select {
     background-color: white;
 }
 
+.block {
+    display: block;
+}
+
 .centered {
     position: relative;
     margin: auto;

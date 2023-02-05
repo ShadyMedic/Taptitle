@@ -1,17 +1,36 @@
-jquery-3.6.1.min.js
-https://code.jquery.com/jquery-3.6.1.min.js
+; Each library must be placed in its own directory within the "3rd-party-libraries" folder.
+; The name of the directory must correspond to the given INI section name.
 
-srt-parser.js
-https://raw.githubusercontent.com/VAS/srt.js/master/srt.js
+;[example]
+;fileCount=3
+;fileNames=file1.js|file2.js.map|file3.js
 
-FileSaver.min.js
-https://raw.githubusercontent.com/eligrey/FileSaver.js/master/dist/FileSaver.min.js
+[jquery]
+fileCount=1
+fileNames=jquery-3.6.1.min.js
+source=https://code.jquery.com/jquery-3.6.1.min.js
 
-genanki.js
-https://raw.githubusercontent.com/krmanik/genanki-js/main/dist/genanki.js
+[srt-parser]
+fileCount=1
+fileNames=srt-parser.js
+source=https://raw.githubusercontent.com/VAS/srt.js/master/srt.js
 
-jszip.min.js
-https://raw.githubusercontent.com/Stuk/jszip/main/dist/jszip.min.js
+[filesaver]
+fileCount=1
+filenames=FileSaver.min.js
+source=https://raw.githubusercontent.com/eligrey/FileSaver.js/master/dist/FileSaver.min.js
 
-sql.js
-https://raw.githubusercontent.com/krmanik/genanki-js/main/sample/js/sql/sql.js
+[genanki]
+fileCount=1
+filenames=genanki.js
+source=https://raw.githubusercontent.com/krmanik/genanki-js/main/dist/genanki.js
+
+[jszip]
+fileCount=1
+fileNames=jszip.min.js
+source=https://raw.githubusercontent.com/Stuk/jszip/main/dist/jszip.min.js
+
+[sql]
+fileCount=2
+fileNames=sql-wasm.js|sql-wasm.wasm
+source=https://objects.githubusercontent.com/github-production-release-asset-2e65be/3556910/31a5b1f2-bc65-4973-96b7-0bd26a015640?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230205%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230205T092148Z&X-Amz-Expires=300&X-Amz-Signature=09a0cb9968ae4e563ebd2b82d4d432861ee44a0777428c50200ee3877fed0b53&X-Amz-SignedHeaders=host&actor_id=19894267&key_id=0&repo_id=3556910&response-content-disposition=attachment%3B%20filename%3Dsqljs-wasm.zip&response-content-type=application%2Foctet-stream

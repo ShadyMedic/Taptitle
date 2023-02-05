@@ -43,10 +43,23 @@ function Dictionary()
         return csv.trimEnd()
     }
 
-    this.exportApkg = function() {
-        //TODO
-        console.log('Exporting as Anki package is not supported yet.')
-        return null
+    this.exportApkg = function(cardStyle, addReversed) {
+        if (addReversed === true) {
+            cardStyle += " (+ reversed card)"
+        }
+
+        let modelFactory = new AnkiModelGenerator()
+        const m = modelFactory.getModel(cardStyle)
+        const deck = new Deck(+ new Date(), "Demo Deck")
+
+        let dict = this.getDictionary()
+        dict.forEach(function(item) {
+            deck.addNote(m.note([item.word, item.translation]))
+        })
+
+        const ankiPackage = new Package()
+        ankiPackage.addDeck(deck)
+        return ankiPackage
     }
 
     this.clear = function() {
