@@ -43,18 +43,12 @@ function Dictionary()
         return csv.trimEnd()
     }
 
-    this.exportApkg = function(cardStyle, addReversed) {
-        if (addReversed === true) {
-            cardStyle += " (+ reversed card)"
-        }
-
-        let modelFactory = new AnkiModelGenerator()
-        const m = modelFactory.getModel(cardStyle)
-        const deck = new Deck(+ new Date(), "Demo Deck")
+    this.exportApkg = function(model) {
+        const deck = new Deck(+ new Date(), "Taptitle Dictionary")
 
         let dict = this.getDictionary()
         dict.forEach(function(item) {
-            deck.addNote(m.note([item.word, item.translation]))
+            deck.addNote(model.note([item.word, item.translation]))
         })
 
         const ankiPackage = new Package()

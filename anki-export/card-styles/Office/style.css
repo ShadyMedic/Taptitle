@@ -1,0 +1,45 @@
+.card {
+    display: flex;
+    justify-content: center	;
+    align-items: center;
+    font-family: arial, serif;
+    font-size: 24px;
+    text-align: center;
+    color: black;
+    background-color: ghostwhite;
+}
+
+.flashcard {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: fit-content;
+    width: 400px;
+    max-width: 90%;
+    border: 3px solid darkblue;
+    background-color: white;
+    padding: 16px 4px;
+}
+
+#question {
+    padding-bottom: 16px;
+    border-bottom: 3px dashed black;
+    margin-bottom: 16px;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.watermark {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: x-small;
+    color: #999;
+}

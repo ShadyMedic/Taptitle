@@ -2,6 +2,7 @@
 
 files/*.pdf
 files/*.zip
+files/*.colpkg
 
 js/3rd-party-libraries/*
 !js/3rd-party-libraries/*.txt

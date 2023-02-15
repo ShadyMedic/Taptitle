@@ -24,27 +24,49 @@
 
                 <section class="carousel-element carousel-displayed">
                     <h2 class="card-style-name">Lame</h2>
-                    <img src="../img/anki-lame.svg" alt="Preview of the lame card style" />
+                    <img src="../img/anki-lame.svg" alt="Preview of the Lame card style" />
                 </section>
 
                 <section class="carousel-element">
                     <h2 class="card-style-name">Flashcard</h2>
-                    <img src="../img/anki-flashcard.svg" alt="Preview of the flashcard card style" />
+                    <img src="../img/anki-flashcard.svg" alt="Preview of the Flashcard card style" />
                     <small class="block">
                         <em style="color: #777">Note: the original word is displayed alone on the front side of the card.</em>
                     </small>
                 </section>
-                <!--
                 <section class="carousel-element">
-                    <h2 class="card-style-name">Round corners</h2>
-                    <img src="../img/anki-roundCorners.png" alt="Preview of the round corners card style" />
+                    <h2 class="card-style-name">Office</h2>
+                    <img src="../img/anki-office.svg" alt="Preview of the Office card style" />
                 </section>
 
                 <section class="carousel-element">
-                    <h2 class="card-style-name">Sharp corners</h2>
-                    <img src="../img/anki-sharpCorners.png" alt="Preview of the sharp corners card style" />
+                    <h2 class="card-style-name">Histological Hell</h2>
+                    <img src="../img/anki-histological-hell.svg" alt="Preview of the Histological Hell card style" />
                 </section>
-                -->
+
+                <section class="carousel-element">
+                    <h2 class="card-style-name">Leporelo</h2>
+                    <img src="../img/anki-leporelo.svg" alt="Preview of the Leporelo card style" />
+                </section>
+
+                <section class="carousel-element">
+                    <h2 class="card-style-name">Forest</h2>
+                    <img src="../img/anki-forest.svg" alt="Preview of the Forest card style" />
+                    <small class="block">
+                        <em style="color: #777">Note: the original word is displayed alone on the front side of the card.</em>
+                    </small>
+                </section>
+
+                <section class="carousel-element">
+                    <h2 class="card-style-name">Cornflower</h2>
+                    <img src="../img/anki-cornflower.svg" alt="Preview of the Cornflower card style" />
+                </section>
+
+                <section class="carousel-element">
+                    <h2 class="card-style-name">Programmers Can't Design</h2>
+                    <img src="../img/anki-programmers-cant-design.svg" alt="Preview of the Programmers Can't Design card style" />
+                </section>
+
                 <div class="carousel-next">▶</div>
             </div>
         </fieldset>
@@ -77,12 +99,27 @@
         <input id="export-form-submit" type="submit" value="Export your dictionary" />
     </form>
 
+    <div class="hidden">
+        <div id="anki-model-data-holders">
+            <!-- The following <pre> elements might contain word "Loading" placed in them by JavaScript -->
+            <!-- This word is used to indicate that the element will be filled with content loaded from a file -->
+            <!-- and the process of reading isn't completed yet. -->
+            <pre id="anki-template-holder"></pre>
+            <pre id="anki-stylesheet-holder"></pre>
+            <pre id="anki-question-html-holder-1"></pre>
+            <pre id="anki-answer-html-holder-1"></pre>
+            <pre id="anki-question-html-holder-2"></pre>
+            <pre id="anki-answer-html-holder-2"></pre>
+        </div>
+    </div>
+
     <script src="../js/3rd-party-libraries/jquery/jquery-3.6.1.min.js"></script>
     <script src="../js/3rd-party-libraries/genanki/genanki.js"></script>
     <script src='../js/3rd-party-libraries/sql/sql-wasm.js'></script>
     <script src="../js/3rd-party-libraries/filesaver/FileSaver.min.js"></script>
     <script src="../js/3rd-party-libraries/jszip/jszip.min.js"></script>
     <script src="../js/Dictionary.js"></script>
+    <script src="../js/FileLoader.js"></script>
     <script src="../js/AnkiModelGenerator.js"></script>
     <script src="../js/anki-export.js"></script>
     <script src="../js/carousel.js"></script>

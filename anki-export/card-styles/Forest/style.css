@@ -1,0 +1,49 @@
+.card {
+    display: flex;
+    justify-content: center	;
+    align-items: center;
+    font-family: arial, serif;
+    font-size: 24px;
+    text-align: center;
+    color: black;
+    background-color: #7a7;
+}
+
+.flashcard {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 100px;
+    min-height: 100px;
+    width: fit-content;
+    height: fit-content;
+    max-width: 90%;
+    border: 8px solid #936235;
+    border-radius: 75px;
+    box-shadow: 0 0 100px 50px #272;
+    padding: 32px;
+    display: flex;
+    justify-content: center	;
+    align-items: center;
+}
+
+.front-color {
+    background-color: #d8b154;
+}
+
+.back-color {
+    background-color: #e8c168;
+}
+
+.watermark {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: x-small;
+    color: white;
+}
